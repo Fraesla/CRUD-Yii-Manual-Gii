@@ -4,18 +4,18 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\BarangSearch */
+/* @var $searchModel app\models\TransaksiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Barangs';
+$this->title = 'Transaksis';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="barang-index">
+<div class="transaksi-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Barang', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Transaksi', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,14 +26,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            //'id',
-            'kode_barang',
-            'nama_barang',
-            'satuan',
+            'kdtrans',
+            'barang.kode_barang',
+            'barang.nama_barang',
+            'barang.harga',
+            'barang.stok',
             'jenis.nama_jenis',
             'supplier.nama_supplier',
-            'harga',
-            'stok',
+            'tanggal',
+            'total',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

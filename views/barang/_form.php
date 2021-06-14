@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Barang */
@@ -17,10 +18,21 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'nama_barang')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'satuan')->textInput(['maxlength' => true]) ?>
+    <?php 
+    	$dataPost=ArrayHelper::map(\app\models\Jenis::find()->asArray()->all(), 'id', 'nama_jenis');
+		echo $form->field($model, 'id_jenis')->dropDownList(
+            $dataPost,           
+            ['id'=>'nama_jenis']
+        );
+     ?>
 
-    <?= $form->field($model, 'id_jenis')->textInput() ?>
-
-    <?= $form->field($model, 'id_supplier')->textInput() ?>
+    <?php 
+    	$dataPost=ArrayHelper::map(\app\models\Supplier::find()->asArray()->all(), 'id', 'nama_supplier');
+		echo $form->field($model, 'id_supplier')->dropDownList(
+            $dataPost,           
+            ['id'=>'nama_supplier']
+        );
+     ?>
 
     <?= $form->field($model, 'harga')->textInput() ?>
 
